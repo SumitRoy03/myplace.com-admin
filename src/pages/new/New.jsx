@@ -4,7 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 import axios from "axios";
-import { axiosInstance } from "../../api";
+// import { axiosInstance } from "../../api";
 import { useNavigate } from "react-router-dom";
 
 const New = ({ inputs, title }) => {
@@ -33,7 +33,7 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axiosInstance.post("/auth/register", newUser);
+      await axios.post(`https://myplace-server-production.up.railway.app/api/auth/register`, newUser, {withCredentials: true});
       navigate('/users');
     } catch (err) {
       console.log(err);
