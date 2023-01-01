@@ -6,7 +6,7 @@ import { useState } from "react";
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
-import { axiosInstance } from "../../api";
+// import { axiosInstance } from "../../api";
 import { useNavigate } from "react-router-dom";
 
 const NewHotel = () => {
@@ -54,7 +54,7 @@ const NewHotel = () => {
         photos: list,
       };
 
-      await axiosInstance.post("/hotels", newhotel);
+      await axios.post(`https://myplace-server-production.up.railway.app/api/hotels`, newhotel, {withCredentials: true});
       navigate('/hotels');
     } catch (err) {console.log(err)}
   };
