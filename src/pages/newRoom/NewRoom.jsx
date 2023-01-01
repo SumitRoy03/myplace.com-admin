@@ -5,7 +5,8 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { useState } from "react";
 import { roomInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
-import { axiosInstance } from "../../api";
+// import { axiosInstance } from "../../api";
+import axios from "axios"
 import { useNavigate } from "react-router-dom";
 
 const NewRoom = () => {
@@ -23,7 +24,7 @@ const NewRoom = () => {
     e.preventDefault();
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
-      await axiosInstance.post(`/rooms/${hotelId}`, { ...info, roomNumbers });
+      await axios.post(`https://myplace-server-production.up.railway.app/api/rooms/${hotelId}`, { ...info, roomNumbers },{withCredentials:true});
       navigate('/rooms');
     } catch (err) {
       console.log(err);
