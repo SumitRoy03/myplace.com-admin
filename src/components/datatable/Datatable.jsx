@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
-import { axiosInstance } from "../../api";
+// import { axiosInstance } from "../../api";
 
 const Datatable = ({columns}) => {
   const location = useLocation();
@@ -18,7 +18,7 @@ const Datatable = ({columns}) => {
 
   const handleDelete = async (id) => {
     try {
-      await axiosInstance.delete(`/${path}/${id}`);
+      await axios.delete(`https://myplace-server-production.up.railway.app/${path}/${id}`,{withCredentials: true});
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };
